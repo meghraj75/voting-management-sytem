@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            max-width: 500px; 
+            margin: auto; 
+        }
+        .card-header {
+            background-color: #007bff; 
+            color: white;
+        }
+        
+        .alert-info {
+            background-color: #e9ecef; 
+            color: #495057;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Admin Details</h1>
+        <div class="card" th:if="${admin != null}">
+            <div class="card-header">
+                Admin Information
+            </div>
+            <div class="card-body bg-success text-white p-3">
+                <h5 class="card-title">Admin ID: <span th:text="${admin.id}"></span></h5>
+                <p class="card-text">
+                    <strong>Name:</strong> <span th:text="${admin.name}"></span><br>
+                    <strong>Date of Birth:</strong> <span th:text="${#dates.format(admin.dob, 'yyyy-MM-dd')}"></span><br>
+                    <strong>Address:</strong> <span th:text="${admin.address}"></span><br>
+                    <strong>Gender:</strong> <span th:text="${admin.gender}"></span><br>
+                    <strong>Username:</strong> <span th:text="${admin.username}"></span>
+                </p>
+            </div>
+        </div>
+        <div class="alert alert-info mt-3" th:if="${admin == null}">
+            No admin found.
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

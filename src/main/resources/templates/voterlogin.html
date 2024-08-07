@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Login</title>
+    <link rel="stylesheet" href="/css/voterlogin.css" /> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h2>Voter Login</h2>
+        <form th:action="@{/voterloginstatus}" method="post" th:object="${voterlogin}">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" th:field="*{username}" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" th:field="*{password}" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div th:if="${error}">
+            <p th:text="${error}"></p>
+        </div>
+    </div>
+</body>
+</html>

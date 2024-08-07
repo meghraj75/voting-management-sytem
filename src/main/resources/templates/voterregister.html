@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Voter Registration</title>
+    <link rel="stylesheet" href="/css/voterregister.css" /> <!-- Add your CSS file here -->
+</head>
+<body>
+    <div class="container">
+        <h2>Voter Registration</h2>
+        <form th:action="@{/voter/govoterregister}" th:object="${voter}" method="post">
+            <div>
+                <label for="votername">Name:</label>
+                <input type="text" id="votername" th:field="*{votername}" />
+                <span th:if="${#fields.hasErrors('votername')}" th:errors="*{votername}">Name Error</span>
+            </div>
+            
+            <div>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" th:field="*{dob}" />
+                <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">Date of Birth Error</span>
+            </div>
+            
+            <div>
+                <label for="gender">Gender:</label>
+                <select id="gender" th:field="*{gender}">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Gender Error</span>
+            </div>
+            
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" th:field="*{username}" />
+                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+            </div>
+            
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" th:field="*{password}" />
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+            </div>
+            
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

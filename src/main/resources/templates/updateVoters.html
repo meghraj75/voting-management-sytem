@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Voter</title>
+</head>
+<body>
+    <h1>Update Voter</h1>
+    <form th:action="@{/voters/update}" th:object="${voter}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        
+        <label for="votername">Voter Name:</label>
+        <input type="text" id="votername" th:field="*{votername}" />
+        <span th:if="${#fields.hasErrors('votername')}" th:errors="*{votername}">Name Error</span>
+        <br/>
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" th:field="*{dob}" />
+        <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">DOB Error</span>
+        <br/>
+        
+        <label for="gender">Gender:</label>
+        <select id="gender" th:field="*{gender}">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+         
+        </select>
+        <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Gender Error</span>
+        <br/>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:field="*{username}" />
+        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+        <br/>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" />
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+        <br/>
+        
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
